@@ -24,8 +24,8 @@
 
 if (process.argv.length <= 5) {
 	console.log(`Made by Tesla.
-Usage: node CFSpike.js <url> <time> <threads_per_ip> <proxies>
-Usage: node CFSpike.js <http://example.com> <60> <100> <http.txt>`);
+Usage: node Spiker.js <url> <time> <threads_per_ip> <proxies>
+Usage: node Spiker.js <http://example.com> <60> <100> <http.txt>`);
     process.exit(-1);
 }
 
